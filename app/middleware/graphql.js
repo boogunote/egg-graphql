@@ -18,8 +18,6 @@ module.exports = (_, app) => {
         return error;
       },
     },
-    // pass app to getApolloServerOptions
-    getApolloServerOptsFromApp(app),
     // pass schema and context to apollo server
     {
       schema: app.schema,
@@ -29,7 +27,9 @@ module.exports = (_, app) => {
         }
         return ctx;
       },
-    }
+    },
+    // pass app to getApolloServerOptions
+    getApolloServerOptsFromApp(app),
   );
   const onPreMiddleware = async (ctx, next) => {
     const { onPreGraphQL, onPrePlayground } = options;
